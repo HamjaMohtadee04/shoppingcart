@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Booking</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Roboto:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--Header and Menu Section-->
+    <header class="container">
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a class="active" href="#">Sign Up</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!--Booking Section-->
+    <main class="main-content container">
+        <div class="booking-form">
+            <h3>Booking Flights</h3>
+            <div class="input-group">
+                <label for="">Flying From</label>
+                <input class="inp-style" type="text" name="" placeholder="Dhake, Bangladesh">
+            </div>
+            <div class="input-group">
+                <label for="">Flying To</label>
+                <input class="inp-style" type="text" name="" placeholder="New York, United States">
+            </div>
+            <div class="inputs">
+                <div class="input-group">
+                    <label" for="">Departure</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+                <div class="input-group">
+                    <label for="">Return</label>
+                    <input class="inp-style" type="date" name="">
+                </div>
+            </div>
+            <div class="input-group f-class">
+                <div>
+                    <label for="" id="firstclass-total">First Class ($150)</label>
+                    <input id="firstclass-count" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <p><span onclick="handlecoastchange('firstclass',true);">+</span> <span onclick=" handlecoastchange('firstclass',false);">-</span></p>
+                </div>
+            </div>
+            
+            <div class="input-group f-class">
+                <div>
+                    <label for="" id="economy-total">Economy ($100)</label>
+                    <input  id="economy-count" class="inp-style inp-width" type="number" name="">
+                </div>
+                <div class="plus-minus-btn">
+                    <p><span onclick=" handlecoastchange('economy',true);">+</span> <span onclick="handlecoastchange('economy',false);">-</span></p>
+                </div>
+            </div>
+            <div class="calculations">
+                <div class="amount">
+                    <div class="left">
+                        <p>Subtotal</p>
+                    </div>
+                    <div class="right">
+                        <p id="total-price">$500</p>
+                    </div>
+                </div>
+
+                <div class="amount">
+                    <div class="left">
+                        <p id="vat">Charge 10% VAT</p>
+                    </div>
+                    <div class="right">
+                        <p>$50</p>
+                    </div>
+                </div>
+                <hr>
+                <div class="amount">
+                    <div class="left">
+                        <h4>Total</h4>
+                    </div>
+                    <div class="right">
+                        <p id="total">$550</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-style">Book Now</button>
+        </div>
+
+        <div class="booking-content">
+            <h1>discover <br> around the world</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicingelit. Provident voluptatibus quam fuga laborumalias veniam libero autem quasi maxime ullam vero nama imi dolor, architecto ab facilis eaque deserunt nobise voluptatibus quam</p>
+        </div>
+        <script>
+    function handlecoastchange(coast,isIncrease){     
+                const coastCount =getinputvalue(coast);
+                //const economyNewCount=economyCount-1;
+                let coastNewCount=coastCount;
+                if(isIncrease==true){
+                    coastNewCount=coastCount+1;
+                }
+                if(isIncrease==false && coastCount>0){
+                    coastNewCount=coastCount-1;
+                }
+                coastInput.value=coastNewCount;
+                //const coastTotal=coastNewCount*100;
+                let coastTotal=0;
+                if(coast=='firstclass'){
+                    coastTotal=coastNewCount*150;
+                }
+                if(coast=='economy'){
+                    coastTotal=coastNewCount*100;
+                }
+                document.getElementById(coast+"-total").innerText="($)"+coastTotal;
+                totalPrice();
+    }
+ function totalPrice(){
+    const firstclass=getinputvalue('firstclass');
+    const economy=getinputvalue('economy');
+                const totalCoast= (firstclassInput3*150) + (economyCount3*100);
+                document.getElementById("total-price").innerText='$'+totalCoast;    
+                const VAT=totalCoast*0.1;
+                document.getElementById("vat").innerText='$'+ VAT; 
+                const total=VAT+totalCoast;
+                document.getElementById("total").innerText='$'+total;   
+ }
+ function getinputvalue(coast){
+     const coastInput=document.getElementById(coast+'-count');
+     const coastcount=parseInt(coastInput.value);
+     return coastcount;
+
+ }
+       
+        </script>
+    </section>
+
+    <!--Thank You-->
+</body>
+
+</html>
